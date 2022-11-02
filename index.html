@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://unpkg.com/vue@3"></script>
+
+<div id="app">{{ message }}</div>
+
+<script>
+  const { createApp } = Vue
+
+  createApp({
+    data() {
+      return {
+        message: 'Hello Vue!'
+      }
+    }
+  }).mount('#app')
+</script>
+
+    <script>
+        // ví dụ về bất đồng bộ đoạn code  xhttp.onreadystatechange thì đc viết trk khi call xhttp.send();
+        // nhưng khi chạy thì nó sẽ chạy sau khi xhttp.send(); để đợi xhttp nó send request và trả về kết quả thành công thì xhttp.onreadystatechange mới chạy
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && xhttp.status == 200) {
+                // Typical action to be performed when the document is ready:
+                console.log(xhttp.responseText);
+            } else {
+                console.log('STATUS REQUEST:', xhttp.status)
+            }
+        };
+        xhttp.open("GET", "https://jsonplaceholder.typicode.com/todosss/1", true);
+        xhttp.send();
+        function myDisplayer(some) {
+            document.getElementById("demo").innerHTML = some;
+        }
+
+        function myCalculator(num1, num2, myCallback) {
+            let sum = num1 + num2;
+            myCallback(sum);
+        }
+// function myDisplayer đc truyền vào ko đc đi kèm dấu ()
+        myCalculator(5, 5, myDisplayer);
+    </script>
+    <h1>xxxxxxx</h1>
+
+</body>
+
+</html>
