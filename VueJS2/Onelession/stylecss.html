@@ -1,0 +1,117 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .vuong {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            margin-left: 20px;
+            background: rgb(148, 146, 143);
+        }
+
+        .red {
+            background: red;
+        }
+
+        .green {
+            background: green;
+        }
+
+        .blue {
+            background: blue;
+        }
+
+        .yellow {
+            background: yellow;
+        }
+    </style>
+
+    <script src="vue.js"></script>
+    <div id="app">
+        <div class="vuong" @click="quanlyRed = !quanlyRed" :class="{red: quanlyRed}"></div>
+        <!-- <div class="vuong"  @click="addToggleClassRed" :class="{red: changeValue1()}"></div>
+        <div class="vuong" @click="addToggleClassYellow" :class="{yellow: changeValue3()}"></div> -->
+        <div class="vuong" :class="[color, totalCaculator, xxxxx()]"></div>
+
+        <hr>
+        <div>1+1 = </div>
+        <input type="text" v-model="totalCaculator">
+
+        <div :class="objClass">check xxxxx</div>
+
+        <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">apply style khong can class</div>
+        <div v-bind:style="styleObject">apply style khong can class</div>
+
+        <div v-bind:style="tuychinhStyle">Tuy chinh theo input</div>
+        <input type="text" v-model="mausac">
+        <input type="text" v-model="cao">
+        <input type="text" v-model="rong">
+    </div>
+
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                quanlyRed: false,
+                color: '',
+                totalCaculator: '',
+                activeColor: 'red',
+                fontSize: 20,
+                styleObject: {
+                    color: 'red',
+                    fontSize: '13px'
+                },
+                mausac : 'red',
+                cao:100,
+                rong:100
+            },
+            computed: {
+                tuychinhStyle:function() {
+                    return {
+                        background: this.mausac,
+                        width: this.rong,
+                        height: this.cao,
+                    }
+                   
+                },
+                objClass: function () {
+                    return {
+                        active: true,
+                        'text-danger': true
+                    }
+                }
+
+            },
+            watch: {
+                totalCaculator: function (newValue) {
+                    console.log(newValue);
+                    if (newValue === '') {
+                        this.color = ''
+                    } else if (newValue != 2) {
+                        this.color = 'red'
+                    } else {
+                        this.color = 'green'
+                    }
+                }
+            },
+            methods: {
+                xxxxx: function () {
+                    return 'xxxxx'
+                }
+            }
+
+        })
+    </script>
+
+</body>
+
+</html>

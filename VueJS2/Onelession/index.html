@@ -1,0 +1,44 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="vue.js"></script>
+  <div id="app">
+
+    <div>diem:{{ diem }}</div>
+    <input type="text" name="xxxxx" id="" v-model="diem">
+  </div>
+
+
+  <script>
+    // tat ca du lieu truyen qua html de o dang du lieu tho
+    // comouter thuc hien nhu mot function nhung no chi dc coi la mot thuoc tinh
+    // computer va watch thuong di voi nhau 
+    // watcher theo doi sy thay doi cua bien de lam mot hanh dong nao
+    var app = new Vue({
+      el: '#app',
+      data: {
+        diem: 'Hello Vuexxxxx!',
+
+      },
+      watch: {
+        diem: function(newValue) {
+          
+          console.log(newValue)
+          console.log('gias tri da duoc thay doi')
+        }
+      }
+      })
+
+      // app.diem = 'ban a co mon toan 8 diem';
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="vue.js"></script>
+<div id="app" >
+    <!-- <div v-on:mousemove="tinhToaDo"> -->
+    <div>
+      <div >Message:{{ message }}</div>
+      <div v-if="seen">{{ sayHello() }}</div>
+      <span v-once>This will never change: {{ message }}</span>
+      <input type="text" name="xxxxx" id="" v-on:input="changeValue">
+      <button v-on:click="increase">{{count}}</button>
+      <button @click="increase">{{count}}</button>
+      <a :id="idElement" v-bind:href="link">Binance</a>
+      <br>
+      <span v-html="testHtml" v-on:mousemove.stop=""></span>
+  
+      <a v-on:click.once="increase">test "v-on:click.once"</a>
+      <input type="text" v-on:keyup.delete="showMessageDelete()" v-model="message">
+      <input type="text" v-on:keyup.enter.space="showMessageEnter()" v-on:keyup.delete="showMessageDelete()">
+      <p>{{x}}/{{y}}</p>
+    </div>
+
+    <!-- <p>Gia tri A: {{tangA}}</p>
+    <p>Gia tri B: {{tangB}}</p> -->
+    <p>Gia tri A: {{tangA()}}</p>
+    <p>Gia tri B: {{tangB()}}</p>
+    <button @click="a++">Tang A</button>
+    <button @click="b++">Tang b</button>
+</div>
+
+<div id="obj">
+  <div>Message:{{ message }}</div>
+</div>
+
+<script>
+    new Vue({
+     el: '#app',
+     data: {
+       message: 'Hello Vuexxxxx!',
+       count:0,
+       seen:0,
+       x:0,
+       y:0,
+       a:0,
+       b:0,
+       link:'https://www.binance.com/vi/trade/BTC_USDT?theme=dark&type=spot',
+       idElement:'xxxxx',
+       testHtml: "<div>xxxxxx</div>"
+     },
+     computed: {
+      // tangA:function() {
+      //   console.log('goi function a');
+      //   return this.a
+      //  },
+      //  tangB:function() {
+      //   console.log('goi function b');
+      //   return this.b
+      //  },
+     },
+     methods: {
+      tangA:function() {
+        console.log('goi function a');
+        return this.a
+       },
+       tangB:function() {
+        console.log('goi function b');
+        return this.b
+       },
+        changeValue:function(event){
+           this.message = event.target.value
+       },
+       increase: function() {
+        console.log(event)
+        this.count +=1
+       },
+       sayHello: function() {
+        return 'ok di em'
+       },
+       showMessageDelete : function() {
+        this.message = 'b vừa ấn vào nut “Delete” or “Backspace”'
+       },
+       showMessageEnter : function() {
+        this.message = 'b vừa ấn vào nut Enter'
+       },
+       tinhToaDo : function(event) {
+        console.log(event)
+        this.x = event.clientX;
+        this.y = event.clientY;
+       },
+     
+     }
+   })
+   new Vue({
+     el: '#obj',
+     data: {
+       message: 'message object',
+       count:0
+     }
+   })
+</script>
+
+</body>
+
+</html>

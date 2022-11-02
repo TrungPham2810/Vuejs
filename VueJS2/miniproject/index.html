@@ -1,0 +1,99 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+  <style>
+    .player-return {
+      color: green;
+    }
+    .monster-return {
+      color: red;
+    }
+  </style>
+    <script src="vue.js"></script>
+<div id="app" >
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <div class="humman">
+          <div class="text-center">Humman</div>
+          <div class="image text-center">
+            <img src="girl_black.png" width="300px" height="400">
+          </div>
+          <div class="hearth mt-4"  style="height: 40px; width: 100%;background: wheat;">
+            <div class="heath-rest text-center" :style="{width : humanHealth + '%'}" style="height:100%;background: red;">
+              <!-- {{humanHealth}} -->
+            </div>
+          </div>
+        </div>
+     
+      </div>
+      <div class="col-sm">
+        <div class="monster">
+          <div class="text-center">Monster</div>
+          <div class="image text-center">
+            <img src="monster.png" alt="" width="300px" height="400">
+          </div>
+          <div class="hearth mt-4"  style="height: 40px; width: 100%;background: wheat;">
+            <div class="heath-rest text-center" :style="{width : monsterHealth + '%'}" style="background: red;height:100%;">
+              <!-- {{monsterHealth}} -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" v-if="!gameIsRunning">
+      <div class="col-sm text-center mt-4">
+        <div id="start-game" @click="startGame" style="width: 400px;margin:auto; background: green;padding: 10px;">Start new game</div>
+      </div>
+    </div>
+    <div class="row" v-else="">
+      <div class="col-sm text-center mt-4">
+        <div style="display: flex;justify-content: center;">
+          <div id="attack" @click="attack" class="ml-2" style="padding: 10px 20px; background: red;">
+            Attack
+          </div>
+          <div id="special-attack" @click="specialAttack" class="ml-2" style="padding: 10px 20px; background: orange;">
+            Special Attack
+          </div>
+          <div id="heal" @click="heal" class="ml-2" style="padding: 10px 20px;background: green;">
+            Heal
+          </div>
+          <div id="give-up" @click="giveUp" class="ml-2" style="padding: 10px 20px; background: wheat;">
+            Give Up
+          </div>
+        </div>
+       
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm">
+          <ul>
+            <li v-for="turn in turns" :class="{'player-return':turn.isPlayer, 'monster-return':!turn.isPlayer}">
+              {{turn.isPlayer ? 'Player' : 'Monster'}} : {{turn.textLog}}
+            </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+<script src="app.js"></script>
+<script>
+
+</script>
+</body>
+
+</html>

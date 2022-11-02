@@ -1,0 +1,54 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="vue.js"></script>
+  <div id="app">
+    <ul>
+         <!-- lặp các số tự nhiên từ 1 -> 10 -->
+        <li v-for="n in 10">{{n}}</li>
+
+        <!-- lặp theo mảng -->
+        <li v-for="menu in menus">{{menu}}</li>
+    </ul>
+
+    <hr>
+    <p>khai bao voi vi tri index</p>
+    <ul>
+        <li v-for="(menu,i) in menus">{{menu}} voi index la {{i}}</li>
+    </ul>
+
+    <hr>
+    <template v-for="(menu,index) in menus">
+        <span>{{menu}}</h3>
+        <div>{{index}}</div>
+    </template>
+    <button @click="menus.push('test')">Add new item menu</button>
+  </div>
+
+
+  <script>
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+       menus:['Home', "About", "Contact"]
+
+      },
+      watch: {
+     
+      }
+      })
+
+    
+  </script>
+
+</body>
+
+</html>
