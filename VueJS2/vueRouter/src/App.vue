@@ -1,20 +1,64 @@
 <template>
-    <div>
-        <PageHeader></PageHeader>
-        <router-view></router-view>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 ">
+                <router-view name="page-header"/>
+                <transition name="slide">
+                    <router-view></router-view>
+                </transition>
+
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-    import PageHeader from './components/layout/Header'
+
+
     export default {
         name: 'app',
         data() {
             return {}
-        },
-        components: {
-            PageHeader
         }
     }
 </script>
+
+<style>
+    /*Slide transition*/
+    .slide-enter {
+
+    }
+    .slide-enter-active {
+        animation: slide-in .2s ease-out forwards;
+        position: absolute;
+    }
+
+    .slide-leave-to {
+
+    }
+    .slide-leave-active {
+        animation: slide-out .2s ease-out forwards;
+    }
+
+    @keyframes slide-in {
+        from{
+            transform: translateX(20px);
+            opacity: 0;
+        }
+        to{
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slide-out {
+        from{
+            transform: translateX(0);
+
+        }
+        to{
+            transform: translateX(20px);
+            opacity: 0;
+        }
+    }
+</style>
 
