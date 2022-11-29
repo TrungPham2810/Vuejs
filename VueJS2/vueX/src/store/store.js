@@ -1,17 +1,20 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Result from './modules/Result'
+import * as actions from './actions'
+import * as getters from './getters'
+import * as mutations from './mutations'
 
 Vue.use(Vuex);
 export const store = new Vuex.Store({
     state: {
-        result: 0
+        result: 0,
+        value:''
     },
-    getters: {
-        tenResult: function (state) {
-            return state.result * 10;
-        },
-        nameResult: function (state) {
-            return state.result + ' Name Product.';
-        },
+    getters,
+    mutations,
+    actions,
+    modules: {
+        Result
     }
 });
